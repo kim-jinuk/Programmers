@@ -1,2 +1,55 @@
-# Programmers
-This is an auto push repository for Baekjoon Online Judge created with [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub).
+# Programmers C++ Solutions
+
+> **교재 기반:** _코딩테스트 합격자 되기 C++편_ (박경록)
+> 
+> **설명:** 이 저장소는 교재에서 다룬 알고리즘 이론을 실전 문제에 적용하면서 **프로그래머스** 풀이 코드를 정리합니다. `BaekjoonHub` 브라우저 확장으로 자동 업로드되므로, 문제를 풀면 해당 파일이 바로 반영됩니다.
+
+---
+
+## 📂 폴더 구조 (자동 생성)
+
+```
+.
+├─ C++/
+│   └─ 프로그래머스/
+│       ├─ Lv.0/            # 입문 문제
+│       ├─ Lv.1/
+│       ├─ Lv.2/
+│       ├─ Lv.3/
+│       └─ ...              # 추가 레벨 폴더
+└─ README.md                # 현재 문서
+```
+
+> **참고**: 각 문제 폴더ㆍ파일 이름은 BaekjoonHub 확장의 기본 규칙(문제명)으로 자동 생성됩니다.
+
+---
+
+## 🔧 컴파일 & 실행 (예시)
+
+```bash
+# 단일 문제 컴파일 (GCC 11+, C++17)
+$ g++ -std=c++17 -O2 "C++/프로그래머스/Lv.1/체육복.cpp" -o uniform
+$ ./uniform
+```
+
+- **컴파일러**: GCC/Clang, C++17 이상
+- **의존성**: 없음 (헤더 전용)
+
+---
+
+## 🗒️ 진행 현황 관리
+
+BaekjoonHub가 문제를 업로드할 때 자동으로 하위 README 표를 업데이트합니다. 추가 설명이 필요하면 각 문제 상단에 주석으로 **풀이 아이디어, 시간·공간 복잡도**를 적습니다.
+
+---
+
+## 🤝 Contributing
+
+개인 학습용 저장소이지만, 개선 PR이나 Issue는 언제든 환영합니다.
+
+---
+
+## 📜 라이선스
+
+풀이 코드는 MIT License로 배포됩니다. 자유롭게 사용‑수정 가능하며, 출처 표기를 부탁드립니다.
+
