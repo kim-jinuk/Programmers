@@ -1,23 +1,16 @@
 #include <string>
 #include <vector>
-#include <unordered_set>
+#include <algorithm>
 
 using namespace std;
 
 bool solution(vector<string> phone_book) {
-    unordered_set<string> phone_set;
+    sort(phone_book.begin(), phone_book.end());
     
-    for (int i = 0; i < phone_book.size(); ++i) {
-        string k;
-        for (int j = 0; j < phone_book[i].length() - 1; ++j) {
-            k += phone_book[i][j];
-            phone_set.insert(k);
+    for (int i = 0; i < phone_book.size() - 1; ++i) {
+        if (phone_book[i] == phone_book[i + 1].substr(0, phone_book[i].size())) {
+            return false;
         }
     }
-    
-    for (string s : phone_book) {
-        if (phone_set.find(s) != phone_set.end()) return false;
-    }
-    
     return true;
 }
