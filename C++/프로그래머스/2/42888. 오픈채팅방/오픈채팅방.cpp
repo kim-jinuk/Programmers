@@ -1,44 +1,33 @@
 #include <string>
 #include <vector>
-#include <unordered_map>
-#include <iostream>
 #include <sstream>
+#include <unordered_map>
 
 using namespace std;
 
-vector<string> split(const string& str, char delimiter) {
-    vector<string> ret;
-    string token;
-    stringstream ss(str);
-    
-    while (getline(ss, token, delimiter)) {
-        ret.push_back(token);
-    }
-    
-    return ret;
-}
-
 vector<string> solution(vector<string> record) {
     vector<string> answer;
-    unordered_map<string, string> userid_name;
+    unordered_map<string, string> uid;
     
-    for (string s : record) {
-        vector<string> cmd = split(s, ' ');
-        if (cmd[0] == "Enter") {
-            userid_name[cmd[1]] = cmd[2];
-        }
-        else if (cmd[0] == "Change") {
-            userid_name[cmd[1]] = cmd[2];
+    for (const string& str : record) {
+        stringstream ss(str);
+        string cmd, id, nickname;
+        ss >> cmd >> id;
+        if (cmd != "Leave") {
+            ss >> nickname;
+            uid[id] = nickname;
         }
     }
     
-    for (string s : record) {
-        vector<string> cmd = split(s, ' ');
-        if (cmd[0] == "Enter") {
-            answer.push_back(userid_name[cmd[1]] + "님이 들어왔습니다.");
+    for (const string& str : record) {
+        stringstream ss(str);
+        string cmd, id;
+        ss >> cmd >> id;
+        if (cmd == "Enter") {
+            answer.push_back(uid[id] + "님이 들어왔습니다.");
         }
-        else if (cmd[0] == "Leave") {
-            answer.push_back(userid_name[cmd[1]] + "님이 나갔습니다.");
+        else if (cmd == "Leave") {
+            answer.push_back(uid[id] + "님이 나갔습니다.");
         }
     }
     
