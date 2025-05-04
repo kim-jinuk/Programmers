@@ -1,39 +1,32 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
-#include <unordered_set>
 #include <sstream>
-#include <iostream>
+#include <unordered_set>
 
 using namespace std;
 
 vector<int> solution(vector<string> id_list, vector<string> report, int k) {
-    vector<int> answer(id_list.size());
-    unordered_map<string, unordered_set<string>> report_log;
-    unordered_map<string, int> reported_count;
-    unordered_map<string, int> stop_list;
+    vector<int> answer;
+    unordered_map<string, unordered_set<string>> reported_user;
+    unordered_map<string, int> count;
     
-    for (string s : report) {
-        string user;
-        string reported;
-        stringstream ss(s);
-        
-        ss >> user >> reported;
-        if (report_log[user].find(reported) == report_log[user].end()) {
-            report_log[user].insert(reported);
-            reported_count[reported]++;
-        }
-            
-        if (reported_count[reported] == k) stop_list[reported] = 1;
+    for (string& r : report) {
+        stringstream ss(r);
+        string user_id, reported_id;
+        ss >> user_id >> reported_id;
+        reported_user[reported_id].insert(user_id);
     }
     
-    for (int i = 0; i < id_list.size(); ++i) {
-        int cnt = 0;
-        for (string s : report_log[id_list[i]]) {
-            if (stop_list[s]) cnt++;
+    for (pair<string, unordered_set<string>> a : reported_user) {
+        if (a.second.size() >= k) {
+            for (const string& uid : a.second) {
+                count[uid]++;
+            }
         }
-        answer[i] = cnt;
     }
+    
+    for (string& id : id_list) answer.push_back(count[id]);
     
     return answer;
 }
