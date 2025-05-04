@@ -58,7 +58,7 @@ vector<bool> solution(vector<int> lst, vector<int> search_lst) {
 
 	for (int key : lst) bst.insert(key);
 
-	for (int search_val : search_lst) result.push_back(bst.sesarch(search_val));
+	for (int search_val : search_lst) result.push_back(bst.search(search_val));
 
 	return result;
 }
