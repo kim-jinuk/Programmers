@@ -16,13 +16,13 @@ private:
     Node* root = nullptr;
     
     static bool compareNodes(Node* a, Node* b) {
-        if (a->y != b->y) return a->y > b->y;
-        return a->x < b->x;
+        if (a->y == b->y) return a->x < b->x;
+        return a->y > b->y;
     }
     
-    Node* addNode(Node* current, Node *newNode) {
+    Node* addNode(Node* current, Node* newNode) {
         if (current == nullptr) return newNode;
-        if (newNode->x < current->x) current->left = addNode(current->left, newNode);
+        if (current->x > newNode->x) current->left = addNode(current->left, newNode);
         else current->right = addNode(current->right, newNode);
         
         return current;
@@ -51,6 +51,7 @@ public:
             nodes.push_back(new Node(i + 1, nodeInfo[i][0], nodeInfo[i][1]));
         }
         sort(nodes.begin(), nodes.end(), compareNodes);
+        
         for (Node* node : nodes) {
             root = addNode(root, node);
         }
