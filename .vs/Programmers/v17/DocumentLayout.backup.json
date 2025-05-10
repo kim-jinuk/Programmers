@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\kjm88\\source\\repos\\Programmers\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kjm88\\source\\repos\\Programmers\\.vs\\VSWorkspaceState.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.vs\\VSWorkspaceState.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kjm88\\source\\repos\\Programmers\\C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uBB38\uC790\uC5F4 \uD574\uC2F1\uC744 \uC774\uC6A9\uD55C \uAC80\uC0C9 \uD568\uC218 \uB9CC\uB4E4\uAE30.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uBB38\uC790\uC5F4 \uD574\uC2F1\uC744 \uC774\uC6A9\uD55C \uAC80\uC0C9 \uD568\uC218 \uB9CC\uB4E4\uAE30.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kjm88\\source\\repos\\Programmers\\C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uB450 \uAC1C\uC758 \uC218\uB85C \uD2B9\uC815 \uAC12 \uB9CC\uB4E4\uAE30.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uB450 \uAC1C\uC758 \uC218\uB85C \uD2B9\uC815 \uAC12 \uB9CC\uB4E4\uAE30.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\kjm88\\source\\repos\\Programmers\\C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uC774\uC9C4 \uD0D0\uC0C9 \uD2B8\uB9AC \uAD6C\uD604.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uC774\uC9C4 \uD0D0\uC0C9 \uD2B8\uB9AC \uAD6C\uD604.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,40 +23,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "VSWorkspaceState.json",
-              "DocumentMoniker": "C:\\Users\\kjm88\\source\\repos\\Programmers\\.vs\\VSWorkspaceState.json",
-              "RelativeDocumentMoniker": ".vs\\VSWorkspaceState.json",
-              "ToolTip": "C:\\Users\\kjm88\\source\\repos\\Programmers\\.vs\\VSWorkspaceState.json",
-              "RelativeToolTip": ".vs\\VSWorkspaceState.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-30T12:43:24.599Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "\uBB38\uC790\uC5F4 \uD574\uC2F1\uC744 \uC774\uC6A9\uD55C \uAC80\uC0C9 \uD568\uC218 \uB9CC\uB4E4\uAE30.cpp",
-              "DocumentMoniker": "C:\\Users\\kjm88\\source\\repos\\Programmers\\C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uBB38\uC790\uC5F4 \uD574\uC2F1\uC744 \uC774\uC6A9\uD55C \uAC80\uC0C9 \uD568\uC218 \uB9CC\uB4E4\uAE30.cpp",
-              "RelativeDocumentMoniker": "C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uBB38\uC790\uC5F4 \uD574\uC2F1\uC744 \uC774\uC6A9\uD55C \uAC80\uC0C9 \uD568\uC218 \uB9CC\uB4E4\uAE30.cpp",
-              "ToolTip": "C:\\Users\\kjm88\\source\\repos\\Programmers\\C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uBB38\uC790\uC5F4 \uD574\uC2F1\uC744 \uC774\uC6A9\uD55C \uAC80\uC0C9 \uD568\uC218 \uB9CC\uB4E4\uAE30.cpp",
-              "RelativeToolTip": "C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uBB38\uC790\uC5F4 \uD574\uC2F1\uC744 \uC774\uC6A9\uD55C \uAC80\uC0C9 \uD568\uC218 \uB9CC\uB4E4\uAE30.cpp",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAABsAAAApAAAAAAAAAA==",
+              "Title": "\uC774\uC9C4 \uD0D0\uC0C9 \uD2B8\uB9AC \uAD6C\uD604.cpp",
+              "DocumentMoniker": "C:\\Users\\kjm88\\source\\repos\\Programmers\\C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uC774\uC9C4 \uD0D0\uC0C9 \uD2B8\uB9AC \uAD6C\uD604.cpp",
+              "RelativeDocumentMoniker": "C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uC774\uC9C4 \uD0D0\uC0C9 \uD2B8\uB9AC \uAD6C\uD604.cpp",
+              "ToolTip": "C:\\Users\\kjm88\\source\\repos\\Programmers\\C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uC774\uC9C4 \uD0D0\uC0C9 \uD2B8\uB9AC \uAD6C\uD604.cpp",
+              "RelativeToolTip": "C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uC774\uC9C4 \uD0D0\uC0C9 \uD2B8\uB9AC \uAD6C\uD604.cpp",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAADQAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-30T05:08:56.535Z",
+              "WhenOpened": "2025-05-04T13:03:36.541Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "\uB450 \uAC1C\uC758 \uC218\uB85C \uD2B9\uC815 \uAC12 \uB9CC\uB4E4\uAE30.cpp",
-              "DocumentMoniker": "C:\\Users\\kjm88\\source\\repos\\Programmers\\C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uB450 \uAC1C\uC758 \uC218\uB85C \uD2B9\uC815 \uAC12 \uB9CC\uB4E4\uAE30.cpp",
-              "RelativeDocumentMoniker": "C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uB450 \uAC1C\uC758 \uC218\uB85C \uD2B9\uC815 \uAC12 \uB9CC\uB4E4\uAE30.cpp",
-              "ToolTip": "C:\\Users\\kjm88\\source\\repos\\Programmers\\C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uB450 \uAC1C\uC758 \uC218\uB85C \uD2B9\uC815 \uAC12 \uB9CC\uB4E4\uAE30.cpp",
-              "RelativeToolTip": "C\u002B\u002B\\\uD504\uB85C\uADF8\uB798\uBA38\uC2A4\\\uC800\uC790\uCD9C\uC81C\\\uB450 \uAC1C\uC758 \uC218\uB85C \uD2B9\uC815 \uAC12 \uB9CC\uB4E4\uAE30.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-30T01:40:37.483Z"
             }
           ]
         }
