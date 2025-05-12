@@ -1,48 +1,48 @@
+// 다익스트라 알고리즘 우선순위 큐 복습
 #include <iostream>
+#include <queue>
 #include <vector>
-#include <algorithm>
 #include <limits>
 #include <tuple>
+#include <unordered_map>
 
 using namespace std;
 
-int INF = numerical_limits<int>::max();
-int MAX_NODES = 100;
-int graph[MAX_NODES][MAX_NODES];
-bool visited[MAX_NODES];
-
-vector<int> solution(int start, int nodeNums, vector<tuple<int, int, int>> edges) {
-	for (int i = 0; i < MAX_NODES; ++i) {
-		fill_n(graph[i], MAX_NODES, INF);
-		visited[i] = false;
+const int INF = numeric_limits<int>::max();
+struct compare {
+	bool operator()(const pair<int, int>& a, const pair<int, int>& b) {
+		return a.first > b.first;
 	}
+};
 
+vector<int> solution(int start, int numNodes, vector<tuple<int, int, int>> edges) {
+	vector<int> distances(numNodes, INF);
+	vector<vector<pair<int, int>>> graph(numNodes);
+	vector<bool> visited(numNodes, false);
+	priority_queue<pair<int, int>, vector<pair<int, int>>, compare> pq;
+	
 	for (const auto& [from, to, weight] : edges) {
-		graph[from][to] = weight;
+		graph[from].push_back({ to, weight });
 	}
 
-	vector<int> answer(nodeNums, INF);
-	answer[start] = 0;
+	pq.push({ 0, start });
+	distances[start] = 0;
 
-	for (int i = 0; i < nodeNums - 1; ++i) {
-		int minDistance = INF;
-		int minNode = -1;
+	while (!pq.empty()) {
+		int minDistance = pq.top().first;
+		int minNode = pq.top().second;
+		pq.pop();
 
-		for (int j = 0; j < nodeNums; ++j) {
-			if (!visited[j] && minDistance > answer[j]) {
-				minDistance = answer[j];
-				minNode = j;
-			}
-		}
-
+		if (visited[minNode]) continue;
 		visited[minNode] = true;
-		for (int j = 0; j < nodeNums; ++j) {
-			int newMinDistance = minDistance + graph[minNode][j];
-			if (!visited[j] && graph[minNode][j] != INF && answer[j] > newMinDistance) {
-				answer[j] = newMinDistance;
+
+		for (const auto& a : graph[minNode]) {
+			if (distances[a.first] > distances[minNode] + a.second) {
+				distances[a.first] = distances[minNode] + a.second;
+				pq.push({ distances[a.first], a.first });
 			}
 		}
 	}
 
-	return answer;
+	return distances;
 }
