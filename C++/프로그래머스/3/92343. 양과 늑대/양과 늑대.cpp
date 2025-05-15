@@ -1,16 +1,20 @@
-#include <algorithm>
+#include <string>
 #include <vector>
+#include <unordered_map>
+#include <algorithm>
 
 using namespace std;
 
-vector<vector<int>> tree;
-vector<int> visited, comp;
-int n, answer = 0;
+int answer = 0;
+vector<bool> visited;
+vector<int> comp;
+unordered_map<int, vector<int>> graph;
 
-void dfs(vector<int> cur) {
-    int sheep = 0, wolf = 0;
-    for (int c : cur) {
-        if (comp[c] == 1) wolf++;
+void dfs(vector<int> current) {
+    int sheep = 0;
+    int wolf = 0;
+    for (int i : current) {
+        if (comp[i] == 1) wolf++;
         else sheep++;
     }
     
@@ -18,31 +22,29 @@ void dfs(vector<int> cur) {
     
     answer = max(answer, sheep);
     
-    for (int i = 0; i < cur.size(); ++i) {
-        int node = cur[i];
-        for (int g : tree[node]) {
-            if (visited[g]) continue;
-            visited[g] = true;
-            cur.push_back(g);
-            dfs(cur);
-            cur.pop_back();
-            visited[g] = false;
+    for (int i = 0; i < current.size(); ++i) {
+        int node = current[i];
+        for (int j : graph[node]) {
+            if (visited[j]) continue;
+            visited[j] = true;
+            current.push_back(j);
+            dfs(current);
+            current.pop_back();
+            visited[j] = false;
         }
     }
 }
 
 int solution(vector<int> info, vector<vector<int>> edges) {
-    n = info.size();
-    tree.resize(n);
-    visited.resize(n, false);
+    visited.resize(info.size(), false);
     comp = info;
     
-    for (auto e : edges) {
-        tree[e[0]].push_back(e[1]);
+    for (int i = 0; i < edges.size(); ++i) {
+        graph[edges[i][0]].push_back(edges[i][1]);
     }
     
     visited[0] = true;
-    
     dfs({0});
+    
     return answer;
 }
