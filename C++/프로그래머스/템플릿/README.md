@@ -46,7 +46,7 @@ void dfs(int node) {
 }
 ```
 
-### ■ 집합 / 미리 분류 (Disjoint Set)
+### ■ 집합 / 분리 집합 (Disjoint Set Union - Union-Find)
 
 ```cpp
 vector<int> parent;
@@ -62,14 +62,14 @@ void unite(int a, int b) {
 
 ---
 
-## 그래프와 다익스트라
+## 그래프 알고리즘
 
-### ■ BFS (Queue + visited)
+### ■ BFS (최단 거리, 무가중치 그래프)
 
 ```cpp
 queue<int> q;
-vector<bool> visited(N + 1, false);
-q.push(1); visited[1] = true;
+vector<bool> visited(N, false);
+q.push(0); visited[0] = true;
 while (!q.empty()) {
     int cur = q.front(); q.pop();
     for (int next : graph[cur]) {
@@ -81,12 +81,14 @@ while (!q.empty()) {
 }
 ```
 
-### ■ Dijkstra (priority\_queue + distance)
+### ■ Dijkstra (가중치 그래프에서 최단 거리)
 
 ```cpp
-vector<int> dist(N + 1, INT_MAX);
+vector<int> dist(N, INT_MAX);
+dist[0] = 0;
 priority_queue<pair<int, int>, vector<pair<int, int>>, greater<>> pq;
-dist[1] = 0; pq.push({0, 1});
+pq.push({0, 0});
+
 while (!pq.empty()) {
     auto [cost, node] = pq.top(); pq.pop();
     if (cost > dist[node]) continue;
@@ -101,6 +103,8 @@ while (!pq.empty()) {
 ```
 
 ---
+
+## 알고리즘 기법
 
 ### ■ 백트래킹 (Backtracking)
 
@@ -127,11 +131,11 @@ void backtrack(vector<int>& cur, int depth) {
 sort(v.begin(), v.end());               // 오름차순
 sort(v.begin(), v.end(), greater<>()); // 내림차순
 sort(v.begin(), v.end(), [](auto& a, auto& b) {
-    return a.first < b.first;          // 서비스 정렬
+    return a.first < b.first;          // 사용자 정의 기준
 });
 ```
 
-### ■ 시뮬레이션 (Simulation - 날짜, 그래프 지도)
+### ■ 시뮬레이션 (Simulation - 단순 조건 구현)
 
 ```cpp
 int dx[4] = {-1, 1, 0, 0};
@@ -139,11 +143,13 @@ int dy[4] = {0, 0, -1, 1};
 for (int dir = 0; dir < 4; ++dir) {
     int nx = x + dx[dir];
     int ny = y + dy[dir];
-    // 범위 체크, 처리
+    if (nx >= 0 && ny >= 0 && nx < N && ny < M) {
+        // 처리
+    }
 }
 ```
 
-### ■ 동적 계획법 (DP)
+### ■ 동적 계획법 (DP - 점화식 기반 최적화)
 
 ```cpp
 vector<int> dp(n + 1, 0);
@@ -152,15 +158,62 @@ for (int i = 2; i <= n; ++i)
     dp[i] = dp[i - 1] + dp[i - 2];
 ```
 
-### ■ 그리디 (Greedy)
+### ■ 그리디 (Greedy - 정렬 + 탐욕 조건)
 
 ```cpp
-sort(tasks.begin(), tasks.end());
-for (auto& [start, end] : tasks) {
-    if (end > last_end) {
-        // 선택 
-        last_end = end;
+sort(jobs.begin(), jobs.end());
+int last_end = 0;
+for (auto& [start, end] : jobs) {
+    if (start >= last_end) {
+        last_end = end; // 선택
     }
+}
+```
+
+### ■ 이분 탐색 (Binary Search)
+
+```cpp
+int binarySearch(vector<int>& arr, int target) {
+    int left = 0, right = arr.size() - 1;
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        if (arr[mid] == target) return mid;
+        else if (arr[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+    return -1;
+}
+```
+
+### ■ 투 포인터 (Two Pointer)
+
+```cpp
+int left = 0, sum = 0, count = 0;
+for (int right = 0; right < arr.size(); ++right) {
+    sum += arr[right];
+    while (sum > target) sum -= arr[left++];
+    if (sum == target) count++;
+}
+```
+
+### ■ 누적합 (Prefix Sum)
+
+```cpp
+vector<int> prefix(n + 1, 0);
+for (int i = 1; i <= n; ++i)
+    prefix[i] = prefix[i - 1] + arr[i - 1];
+// 구간합 [l, r] = prefix[r + 1] - prefix[l]
+```
+
+### ■ 슬라이딩 윈도우 (Sliding Window - 고정 길이 구간 합)
+
+```cpp
+int sum = 0, maxSum = 0;
+for (int i = 0; i < k; ++i) sum += arr[i];
+maxSum = sum;
+for (int i = k; i < arr.size(); ++i) {
+    sum += arr[i] - arr[i - k];
+    maxSum = max(maxSum, sum);
 }
 ```
 
