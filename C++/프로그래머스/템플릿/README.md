@@ -1,29 +1,29 @@
-# Æ¼ÄÏ Àü´ŞÀü³¯ º¸´Â C++ ÄÚµùÅ×½ºÆ® ¿ä¾à Åë½Å¹®.md
+# C++ ì½”ë”©í…ŒìŠ¤íŠ¸ ìš”ì•½ í…œí”Œë¦¿.md
 
 ---
 
-## ÀÏ¹İ ±â¼ú
+## ì¼ë°˜ ê¸°ìˆ 
 
-### ¡á ¹è¿­ (Array)
+### â–  ë°°ì—´ (Array)
 
 ```cpp
 vector<int> arr = {1, 2, 3};
 for (int i = 0; i < arr.size(); ++i) cout << arr[i];
 ```
 
-### ¡á ½ºÅÃ (Stack)
+### â–  ìŠ¤íƒ (Stack)
 
 ```cpp
 stack<int> s; s.push(1); s.pop(); int t = s.top();
 ```
 
-### ¡á Å¥ (Queue)
+### â–  í (Queue)
 
 ```cpp
 queue<int> q; q.push(1); q.pop(); int f = q.front();
 ```
 
-### ¡á ÇØ½Ã (unordered\_map / unordered\_set)
+### â–  í•´ì‹œ (unordered\_map / unordered\_set)
 
 ```cpp
 unordered_map<string, int> m; m["apple"] = 3;
@@ -32,9 +32,9 @@ unordered_set<int> s; s.insert(10);
 
 ---
 
-## ±¸Á¶ÇÏ´Â ±¸¼º ±â´É
+## êµ¬ì¡°í•˜ëŠ” êµ¬ì„± ê¸°ëŠ¥
 
-### ¡á Æ®¸® (Tree - DFS)
+### â–  íŠ¸ë¦¬ (Tree - DFS)
 
 ```cpp
 vector<vector<int>> tree;
@@ -46,7 +46,7 @@ void dfs(int node) {
 }
 ```
 
-### ¡á ÁıÇÕ / ºĞ¸® ÁıÇÕ (Disjoint Set Union - Union-Find)
+### â–  ì§‘í•© / ë¶„ë¦¬ ì§‘í•© (Disjoint Set Union - Union-Find)
 
 ```cpp
 vector<int> parent;
@@ -62,9 +62,9 @@ void unite(int a, int b) {
 
 ---
 
-## ±×·¡ÇÁ ¾Ë°í¸®Áò
+## ê·¸ë˜í”„ ì•Œê³ ë¦¬ì¦˜
 
-### ¡á BFS (ÃÖ´Ü °Å¸®, ¹«°¡ÁßÄ¡ ±×·¡ÇÁ)
+### â–  BFS (ìµœë‹¨ ê±°ë¦¬, ë¬´ê°€ì¤‘ì¹˜ ê·¸ë˜í”„)
 
 ```cpp
 queue<int> q;
@@ -81,7 +81,7 @@ while (!q.empty()) {
 }
 ```
 
-### ¡á Dijkstra (°¡ÁßÄ¡ ±×·¡ÇÁ¿¡¼­ ÃÖ´Ü °Å¸®)
+### â–  Dijkstra (ê°€ì¤‘ì¹˜ ê·¸ë˜í”„ì—ì„œ ìµœë‹¨ ê±°ë¦¬)
 
 ```cpp
 vector<int> dist(N, INT_MAX);
@@ -104,14 +104,14 @@ while (!pq.empty()) {
 
 ---
 
-## ¾Ë°í¸®Áò ±â¹ı
+## ì•Œê³ ë¦¬ì¦˜ ê¸°ë²•
 
-### ¡á ¹éÆ®·¡Å· (Backtracking)
+### â–  ë°±íŠ¸ë˜í‚¹ (Backtracking)
 
 ```cpp
 void backtrack(vector<int>& cur, int depth) {
     if (depth == target) {
-        // °á°ú Ã³¸®
+        // ê²°ê³¼ ì²˜ë¦¬
         return;
     }
     for (int i = 0; i < n; ++i) {
@@ -125,17 +125,17 @@ void backtrack(vector<int>& cur, int depth) {
 }
 ```
 
-### ¡á Á¤·Ä (Sorting)
+### â–  ì •ë ¬ (Sorting)
 
 ```cpp
-sort(v.begin(), v.end());               // ¿À¸§Â÷¼ø
-sort(v.begin(), v.end(), greater<>()); // ³»¸²Â÷¼ø
+sort(v.begin(), v.end());               // ì˜¤ë¦„ì°¨ìˆœ
+sort(v.begin(), v.end(), greater<>()); // ë‚´ë¦¼ì°¨ìˆœ
 sort(v.begin(), v.end(), [](auto& a, auto& b) {
-    return a.first < b.first;          // »ç¿ëÀÚ Á¤ÀÇ ±âÁØ
+    return a.first < b.first;          // ì‚¬ìš©ì ì •ì˜ ê¸°ì¤€
 });
 ```
 
-### ¡á ½Ã¹Ä·¹ÀÌ¼Ç (Simulation - ´Ü¼ø Á¶°Ç ±¸Çö)
+### â–  ì‹œë®¬ë ˆì´ì…˜ (Simulation - ë‹¨ìˆœ ì¡°ê±´ êµ¬í˜„)
 
 ```cpp
 int dx[4] = {-1, 1, 0, 0};
@@ -144,12 +144,12 @@ for (int dir = 0; dir < 4; ++dir) {
     int nx = x + dx[dir];
     int ny = y + dy[dir];
     if (nx >= 0 && ny >= 0 && nx < N && ny < M) {
-        // Ã³¸®
+        // ì²˜ë¦¬
     }
 }
 ```
 
-### ¡á µ¿Àû °èÈ¹¹ı (DP - Á¡È­½Ä ±â¹İ ÃÖÀûÈ­)
+### â–  ë™ì  ê³„íšë²• (DP - ì í™”ì‹ ê¸°ë°˜ ìµœì í™”)
 
 ```cpp
 vector<int> dp(n + 1, 0);
@@ -158,19 +158,19 @@ for (int i = 2; i <= n; ++i)
     dp[i] = dp[i - 1] + dp[i - 2];
 ```
 
-### ¡á ±×¸®µğ (Greedy - Á¤·Ä + Å½¿å Á¶°Ç)
+### â–  ê·¸ë¦¬ë”” (Greedy - ì •ë ¬ + íƒìš• ì¡°ê±´)
 
 ```cpp
 sort(jobs.begin(), jobs.end());
 int last_end = 0;
 for (auto& [start, end] : jobs) {
     if (start >= last_end) {
-        last_end = end; // ¼±ÅÃ
+        last_end = end; // ì„ íƒ
     }
 }
 ```
 
-### ¡á ÀÌºĞ Å½»ö (Binary Search)
+### â–  ì´ë¶„ íƒìƒ‰ (Binary Search)
 
 ```cpp
 int binarySearch(vector<int>& arr, int target) {
@@ -185,7 +185,7 @@ int binarySearch(vector<int>& arr, int target) {
 }
 ```
 
-### ¡á Åõ Æ÷ÀÎÅÍ (Two Pointer)
+### â–  íˆ¬ í¬ì¸í„° (Two Pointer)
 
 ```cpp
 int left = 0, sum = 0, count = 0;
@@ -196,16 +196,16 @@ for (int right = 0; right < arr.size(); ++right) {
 }
 ```
 
-### ¡á ´©ÀûÇÕ (Prefix Sum)
+### â–  ëˆ„ì í•© (Prefix Sum)
 
 ```cpp
 vector<int> prefix(n + 1, 0);
 for (int i = 1; i <= n; ++i)
     prefix[i] = prefix[i - 1] + arr[i - 1];
-// ±¸°£ÇÕ [l, r] = prefix[r + 1] - prefix[l]
+// êµ¬ê°„í•© [l, r] = prefix[r + 1] - prefix[l]
 ```
 
-### ¡á ½½¶óÀÌµù À©µµ¿ì (Sliding Window - °íÁ¤ ±æÀÌ ±¸°£ ÇÕ)
+### â–  ìŠ¬ë¼ì´ë”© ìœˆë„ìš° (Sliding Window - ê³ ì • ê¸¸ì´ êµ¬ê°„ í•©)
 
 ```cpp
 int sum = 0, maxSum = 0;
