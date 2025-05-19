@@ -13,9 +13,7 @@ string solution(string s) {
     }
 
     for (int i = 0; i < 26; ++i) {
-        for (int j = 0; j < cnt[i]; ++j) {
-            answer += ('a' + i);
-        }
+        answer += string(cnt[i], i + 'a');
     }
 
     return answer;
