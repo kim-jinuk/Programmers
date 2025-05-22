@@ -1,8 +1,6 @@
 #include <string>
 #include <vector>
 
-// t[i]
-
 using namespace std;
 
 int solution(vector<vector<int>> triangle) {
