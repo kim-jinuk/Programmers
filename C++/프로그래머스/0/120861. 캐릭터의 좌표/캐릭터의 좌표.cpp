@@ -3,31 +3,33 @@
 
 using namespace std;
 
-pair<int, int> get_move(string s) {
+pair<int, int> key_tans(const string& s) {
     if (s == "left") return {-1, 0};
     else if (s == "right") return {1, 0};
     else if (s == "up") return {0, 1};
     else if (s == "down") return {0, -1};
+    else return {0, 0};
 }
 
-bool isWithinRange(int x, int y, int xx, int yy) {
-    return (-xx) / 2 <= x &&  x <= (xx / 2) && (-yy) / 2 <= y && y <= (yy / 2);
+bool isWithinRange(int x, int y, int bx, int by) {
+    int bxx = (bx - 1) / 2;
+    int byy = (by  -1) / 2;
+    return -bxx <= x && x <= bxx && -byy <= y && y <= byy;
 }
 
 vector<int> solution(vector<string> keyinput, vector<int> board) {
-    vector<int> answer;
-    pair<int, int> move;
-    int x = 0, y = 0;
+    vector<int> answer = {0, 0};
+    int dx, dy;
     
-    for (string s : keyinput) {
-        move = get_move(s);
-        int nx = x + move.first;
-        int ny = y + move.second;
+    for (const string& s : keyinput) {
+        pair<int, int> move = key_tans(s);
+        int nx = answer[0] + move.first;
+        int ny = answer[1] + move.second;
         if (isWithinRange(nx, ny, board[0], board[1])) {
-            x = nx;
-            y = ny;
+            answer[0] = nx;
+            answer[1] = ny;
         }
     }
     
-    return {x, y};
+    return answer;
 }
