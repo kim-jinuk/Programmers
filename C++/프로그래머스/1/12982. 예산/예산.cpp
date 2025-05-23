@@ -1,22 +1,18 @@
 #include <iostream>
+#include <algorithm>
 #include <string>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
-bool comp(int a, int b) { return a < b;}
-
 int solution(vector<int> d, int budget) {
     int answer = 0;
-    sort(d.begin(), d.end(), comp);
+    sort(d.begin(), d.end(), [](int a, int b){return a < b;});
     
     for (int i : d) {
-        if (budget >= i) {
-            answer++;
-            budget -= i;
-        }
+        if (i > budget) return answer;
+        budget -= i;
+        answer++;
     }
-    
     return answer;
 }
