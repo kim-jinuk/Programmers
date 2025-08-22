@@ -1,84 +1,59 @@
-#include <algorithm>
-#include <vector>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Node {
-    int id, x, y;
-    Node* left = nullptr;
-    Node* right = nullptr;
-    
-    Node(int id, int x, int y) : id(id), x(x), y(y) {}
+    int x, y, id;
+    int left = -1, right = -1;
 };
 
-class BinaryTree {
-private:
-    Node* root = nullptr;
-    
-    static bool compareNodes(Node* a, Node* b) {
-        if (a->y == b->y) return a->x < b->x;
-        return a->y > b->y;
-    }
-    
-    Node* addNode(Node* current, Node* newNode) {
-        if (current == nullptr) return newNode;
-        if (current->x > newNode->x) current->left = addNode(current->left, newNode);
-        else current->right = addNode(current->right, newNode);
-        
-        return current;
-    }
-    
-    void preOrder(Node* node, vector<int>& traversal) {
-        if (node == nullptr) return;
-        traversal.push_back(node->id);
-        preOrder(node->left, traversal);
-        preOrder(node->right, traversal);
-    }
-    
-    void postOrder(Node* node, vector<int>& traversal) {
-        if (node == nullptr) return;
-        postOrder(node->left, traversal);
-        postOrder(node->right, traversal);
-        traversal.push_back(node->id);
-    }
-    
-public:
-    BinaryTree() : root(nullptr) {}
-    
-    void buildTree(const vector<vector<int>>& nodeInfo) {
-        vector<Node*> nodes;
-        for (int i = 0; i < nodeInfo.size(); ++i) {
-            nodes.push_back(new Node(i + 1, nodeInfo[i][0], nodeInfo[i][1]));
-        }
-        sort(nodes.begin(), nodes.end(), compareNodes);
-        
-        for (Node* node : nodes) {
-            root = addNode(root, node);
+void preorder(const vector<Node>& a, int u, vector<int>& out){
+    if (u == -1) return;
+    out.push_back(a[u].id);
+    preorder(a, a[u].left, out);
+    preorder(a, a[u].right, out);
+}
+void postorder(const vector<Node>& a, int u, vector<int>& out){
+    if (u == -1) return;
+    postorder(a, a[u].left, out);
+    postorder(a, a[u].right, out);
+    out.push_back(a[u].id);
+}
+
+int insert_node(vector<Node>& a, int root, int u){
+    int cur = root;
+    while (true) {
+        if (a[u].x < a[cur].x) {
+            if (a[cur].left == -1) { a[cur].left = u; break; }
+            cur = a[cur].left;
+        } else {
+            if (a[cur].right == -1) { a[cur].right = u; break; }
+            cur = a[cur].right;
         }
     }
-    
-    vector<int> getPreOrderTraversal() {
-        vector<int> traversal;
-        preOrder(root, traversal);
-        
-        return traversal;
-    }
-    
-    vector<int> getPostOrderTraversal() {
-        vector<int> traversal;
-        postOrder(root, traversal);
-        
-        return traversal;
-    }
-};
+    return root;
+}
 
 vector<vector<int>> solution(vector<vector<int>> nodeinfo) {
-    vector<vector<int>> answer;
-    BinaryTree tree;
-    
-    tree.buildTree(nodeinfo);
-    answer.push_back(tree.getPreOrderTraversal());
-    answer.push_back(tree.getPostOrderTraversal());
-    
-    return answer;
+    int n = (int)nodeinfo.size();
+    vector<Node> nodes; nodes.reserve(n);
+    for (int i = 0; i < n; ++i)
+        nodes.push_back({nodeinfo[i][0], nodeinfo[i][1], i+1, -1, -1});
+
+    // y 내림차순, x 오름차순
+    vector<int> ord(n);
+    iota(ord.begin(), ord.end(), 0);
+    sort(ord.begin(), ord.end(), [&](int a, int b){
+        if (nodes[a].y != nodes[b].y) return nodes[a].y > nodes[b].y;
+        return nodes[a].x < nodes[b].x;
+    });
+
+    int root = ord[0];
+    for (int k = 1; k < n; ++k)
+        root = insert_node(nodes, root, ord[k]);
+
+    vector<int> pre, post;
+    pre.reserve(n); post.reserve(n);
+    preorder(nodes, root, pre);
+    postorder(nodes, root, post);
+    return {pre, post};
 }
