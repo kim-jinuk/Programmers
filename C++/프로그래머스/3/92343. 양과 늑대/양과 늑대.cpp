@@ -1,7 +1,7 @@
 #include <string>
 #include <vector>
-#include <unordered_map>
 #include <algorithm>
+#include <unordered_map>
 
 using namespace std;
 
@@ -19,7 +19,6 @@ void dfs(vector<int> current) {
     }
     
     if (sheep <= wolf) return;
-    
     answer = max(answer, sheep);
     
     for (int i = 0; i < current.size(); ++i) {
