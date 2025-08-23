@@ -1,62 +1,70 @@
 #include <vector>
 #include <algorithm>
-#include <numeric>
-
 using namespace std;
 
 struct Node {
     int x, y, id;
-    int left = -1, right = -1;
+    Node* left;
+    Node* right;
 };
 
-void preorder(const vector<Node>& a, int u, vector<int>& out){
-    if (u == -1) return;
-    out.push_back(a[u].id);
-    preorder(a, a[u].left, out);
-    preorder(a, a[u].right, out);
-}
-void postorder(const vector<Node>& a, int u, vector<int>& out){
-    if (u == -1) return;
-    postorder(a, a[u].left, out);
-    postorder(a, a[u].right, out);
-    out.push_back(a[u].id);
-}
-
-int insert_node(vector<Node>& a, int root, int u){
-    int cur = root;
+static inline Node* insert_node(Node* root, Node* u) {
+    if (!root) return u;
+    Node* cur = root;
     while (true) {
-        if (a[u].x < a[cur].x) {
-            if (a[cur].left == -1) { a[cur].left = u; break; }
-            cur = a[cur].left;
+        if (u->x < cur->x) {
+            if (!cur->left) { cur->left = u; break; }
+            cur = cur->left;
         } else {
-            if (a[cur].right == -1) { a[cur].right = u; break; }
-            cur = a[cur].right;
+            if (!cur->right) { cur->right = u; break; }
+            cur = cur->right;
         }
     }
     return root;
 }
 
-vector<vector<int>> solution(vector<vector<int>> nodeinfo) {
-    int n = (int)nodeinfo.size();
-    vector<Node> nodes; nodes.reserve(n);
-    for (int i = 0; i < n; ++i)
-        nodes.push_back({nodeinfo[i][0], nodeinfo[i][1], i+1, -1, -1});
+static inline void preorder(Node* u, vector<int>& out) {
+    if (!u) return;
+    out.push_back(u->id);
+    preorder(u->left, out);
+    preorder(u->right, out);
+}
+static inline void postorder(Node* u, vector<int>& out) {
+    if (!u) return;
+    postorder(u->left, out);
+    postorder(u->right, out);
+    out.push_back(u->id);
+}
 
-    // y 내림차순, x 오름차순
-    vector<int> ord(n);
-    iota(ord.begin(), ord.end(), 0);
-    sort(ord.begin(), ord.end(), [&](int a, int b){
-        if (nodes[a].y != nodes[b].y) return nodes[a].y > nodes[b].y;
-        return nodes[a].x < nodes[b].x;
+static inline void destroy(Node* u) {  // 메모리 정리(선택)
+    if (!u) return;
+    destroy(u->left);
+    destroy(u->right);
+    delete u;
+}
+
+vector<vector<int>> solution(vector<vector<int>> nodeinfo) {
+    const int n = (int)nodeinfo.size();
+    vector<Node*> nodes; nodes.reserve(n);
+    for (int i = 0; i < n; ++i) {
+        nodes.push_back(new Node{ nodeinfo[i][0], nodeinfo[i][1], i + 1, nullptr, nullptr });
+    }
+
+    // y 내림차순, x 오름차순 → 위 레벨부터 삽입
+    sort(nodes.begin(), nodes.end(), [](const Node* a, const Node* b){
+        if (a->y != b->y) return a->y > b->y;
+        return a->x < b->x;
     });
 
-    int root = ord[0];
-    for (int k = 1; k < n; ++k)
-        root = insert_node(nodes, root, ord[k]);
+    Node* root = nullptr;
+    for (Node* nd : nodes) root = insert_node(root, nd);
 
-    vector<int> pre, post;
-    pre.reserve(n); post.reserve(n);
-    preorder(nodes, root, pre);
-    postorder(nodes, root, post);
-    return {pre, post};
+    vector<int> pre, post; pre.reserve(n); post.reserve(n);
+    preorder(root, pre);
+    postorder(root, post);
+
+    // (선택) OJ에선 생략해도 되지만 깔끔하게 정리
+    destroy(root);
+
+    return { pre, post };
 }
