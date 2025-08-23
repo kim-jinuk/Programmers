@@ -3,11 +3,12 @@
 #include <limits>
 
 using namespace std;
+
 const int INF = numeric_limits<int>::max();
 
 vector<int> dijkstra(int start, int n, const vector<vector<int>>& arr) {
-    vector<int> result(n+1, INF);
-    vector<bool> visited(n+1);
+    vector<int> result(n + 1, INF);
+    vector<bool> visited(n + 1, false);
     result[start] = 0;
     
     for (int i = 0; i <= n; ++i) {
@@ -23,9 +24,7 @@ vector<int> dijkstra(int start, int n, const vector<vector<int>>& arr) {
         
         for (int j = 0; j <= n; ++j) {
             if (!visited[j] && arr[curr][j] != INF) {
-                if (result[j] > arr[curr][j] + result[curr]) {
-                    result[j] = arr[curr][j] + result[curr];
-                }
+                result[j] = min(result[j], result[curr] + arr[curr][j]);
             }
         }
     }
@@ -35,20 +34,20 @@ vector<int> dijkstra(int start, int n, const vector<vector<int>>& arr) {
 
 int solution(int n, int s, int a, int b, vector<vector<int>> fares) {
     int answer = INF;
-    vector<vector<int>> arr(n + 1, vector<int>(n + 1, INF));
+    vector<vector<int>> graph(n + 1, vector<int>(n + 1, INF));
     
     for (int i = 0; i <= n; ++i) {
-        arr[i][i] = 0;
+        graph[i][i] = 0;
     }
     
-    for (vector<int> num : fares) {
-        arr[num[0]][num[1]] = num[2];
-        arr[num[1]][num[0]] = num[2];
+    for (vector<int> f : fares) {
+        graph[f[0]][f[1]] = f[2];
+        graph[f[1]][f[0]] = f[2];
     }
     
-    vector<int> result_s = dijkstra(s, n, arr);
-    vector<int> result_a = dijkstra(a, n, arr);
-    vector<int> result_b = dijkstra(b, n, arr);
+    vector<int> result_s = dijkstra(s, n, graph);
+    vector<int> result_a = dijkstra(a, n, graph);
+    vector<int> result_b = dijkstra(b, n, graph);
     
     for (int i = 1; i <= n; ++i) {
         if (result_s[i] != INF && result_a[i] != INF && result_b[i] != INF) {
