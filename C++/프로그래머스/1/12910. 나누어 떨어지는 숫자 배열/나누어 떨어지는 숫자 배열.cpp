@@ -17,6 +17,5 @@ vector<int> solution(vector<int> arr, int divisor) {
     
     sort(answer.begin(), answer.end(), [](int a, int b){return a < b;});
     
-    if (answer.empty()) answer.push_back(-1);
-    return answer;
+    return answer.empty() ? vector<int>(1, -1) : answer;
 }
