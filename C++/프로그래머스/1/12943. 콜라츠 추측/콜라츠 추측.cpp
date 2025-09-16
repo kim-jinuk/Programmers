@@ -4,13 +4,14 @@
 using namespace std;
 
 int solution(int num) {
+    long long num2 = num;
     int answer = 0;
-    while (num != 1) {
-        if (answer > 400) return -1;
+    while (num2 != 1) {
+        if (answer > 500) return -1;
         answer++;
         
-        if (num % 2 == 0) num /= 2;
-        else {num = num * 3 + 1;}
+        if (num2 % 2 == 0) num2 /= 2;
+        else {num2 = num2 * 3 + 1;}
     }
     return answer;
 }
