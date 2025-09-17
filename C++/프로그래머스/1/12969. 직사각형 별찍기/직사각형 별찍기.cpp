@@ -6,13 +6,13 @@ using namespace std;
 int main(void) {
     int a;
     int b;
+    string s;
     cin >> a >> b;
     
+    s.append(a, '*');
+    
     for (int i = 0; i < b; ++i) {
-        for (int j = 0; j < a; ++j) {
-            cout << "*";
-        }
-        cout << endl;
+        cout << s << endl;
     }
     
     return 0;
